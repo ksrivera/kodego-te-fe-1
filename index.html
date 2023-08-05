@@ -1,0 +1,107 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Frontend TE -MP3 Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- font family for noto sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font-awesome toolkit for play, next, and previous button controls -->
+    <script
+      src="https://kit.fontawesome.com/24c89dd9a1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" defer></script>
+    <!-- tailwindcss cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+ 
+  <body>
+     <!-- background image of the whole body content -->
+    <div  class="bg-[url('https://images.unsplash.com/photo-1530128118208-89f6ce02b37b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] bg-cover bg-no-repeat bg-center min-h-screen"
+    >
+        <!-- container for the whole content body <mp3 player> -->
+        <div class="h-full max-w-max grid grid-cols-2 m-auto content-center">
+            <div class="h-auto w-auto px-8 py-4 backdrop-blur-sm bg-white/70 flex flex-col justify-center items-center mx-auto rounded-3xl">
+                <!-- container div for the content items <navigation> -->
+                <div class="h-[590px] w-[340px]">
+                    <!-- album art cover -->
+                    <div class="relative mb-72">
+                        <img
+                            src="https://e-cdn-images.dzcdn.net/images/cover/a98df7a584f8a3f50d4bb312bdbc44ff/264x264-000000-80-0-0.jpg"
+                            alt="Album Cover"
+                            s
+                            class="absolute w-[220px] h-[220px] rounded-lg brightness-150 items-center bg-center ml-4 my-6 z-10 shadow-[2.0px_4.0px_4.0px_rgba(0,0,0,0.38)]"
+                            title="All Too Well Cover Art"
+                        />
+                        <img
+                            src="https://github.com/ksrivera/kodego-te-fe-1/blob/main/vinyl.png?raw=true"
+                            alt="Album Cover"
+                            s
+                            class="absolute w-[210px] h-[210px] rounded-lg items-center bg-center mt-7 ml-[108px]"
+                            title="All Too Well Cover Art"
+                        />
+                    </div>
+                
+                    <!-- song title and artist -->
+                    <div class="mt-8 mb-4 text-center">
+                        <h1 class="font-semibold text-xl tracking-tighter">
+                            All Too Well (Taylor's Version)
+                        </h1>
+                        <h3 class="font-normal text-lg">
+                            Taylor Swift
+                        </h3>
+                    </div>
+                    <audio id="song">
+                        <source src="https://audio.jukehost.co.uk/WXOrcZ3dh241ExkU8AGdESAJ7urPrGPz" type="audio/mpeg" />
+                    </audio>
+                    <!-- duration container -->
+                    <div class="flex justify-between pb-2 text-[13px]">
+                        <span id="current-time">00:00</span>
+                        <span id="song-duration">10:13</span>
+                    </div>
+                    <!-- progress bar  -->
+                    <div>
+                        <input type="range" value="0" max=613 id='seek-bar' class="w-full cursor-pointer"></input>
+                    </div>
+                    <!-- mp3 player controls section and container -->
+                    <div class="flex justify-around pt-10">
+                        <div id="previous-btn" class="text-white cursor-pointer pt-8">
+                            <i
+                                class="fa-solid fa-backward-step fa-3x text-[#9e5574]"
+                            ></i>
+                        </div>
+                        <div class="cursor-pointer">
+                            <i id="play-btn" class="flex items-center justify-center m-auto fa-solid fa-play fa-3x text-slate-100 bg-[#7f305c] w-28 h-28 rounded-full shadow-2xl"></i>
+                        </div>
+                        <div id="next-btn" class="cursor-pointer pt-8">
+                            <i
+                                class="fa-solid fa-forward-step fa-3x text-[#9e5574]"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='text-slate-100 h-[500px]'> 
+                <div>
+                    <h1 class="text-3xl opacity-75 pb-10 font-bold">Explore</h1> 
+                </div>
+                <div class="grid grid-cols-3 text-xl">
+                    <h3 id="lyrics">Lyrics</h3>
+                    <h3 id="other-albums">Other Albums</h3>
+                    <h3 id="related-artists">Related Artists</h3>
+                </div>
+                <div id="content" class="animate-scroll"></div>
+            </div>
+        </div>
+    </div>
+    
+  </body>
+</html>
